@@ -1,0 +1,258 @@
+[
+    {
+        "query": "How much do I need to pay for hostel?",
+        "expected_intent": "rag_query",
+        "category": "rag"
+    },
+    {
+        "query": "How much is the tuition fee?",
+        "expected_intent": "rag_query",
+        "category": "rag"
+    },
+    {
+        "query": "What is the bus fee?",
+        "expected_intent": "rag_query",
+        "category": "rag"
+    },
+    {
+        "query": "How can I pay my college fees?",
+        "expected_intent": "rag_query",
+        "category": "rag"
+    },
+    {
+        "query": "Do I need 75 percent attendance?",
+        "expected_intent": "rag_query",
+        "category": "rag"
+    },
+    {
+        "query": "Tell me about the attendance requirement",
+        "expected_intent": "rag_query",
+        "category": "rag"
+    },
+    {
+        "query": "When does the library open?",
+        "expected_intent": "rag_query",
+        "category": "rag"
+    },
+    {
+        "query": "When does the library close?",
+        "expected_intent": "rag_query",
+        "category": "rag"
+    },
+    {
+        "query": "Can I borrow three books?",
+        "expected_intent": "rag_query",
+        "category": "rag"
+    },
+    {
+        "query": "For how many days can I keep a library book?",
+        "expected_intent": "rag_query",
+        "category": "rag"
+    },
+    {
+        "query": "Where can I get my bonafide certificate?",
+        "expected_intent": "rag_query",
+        "category": "rag"
+    },
+    {
+        "query": "How do students apply for a bonafide?",
+        "expected_intent": "rag_query",
+        "category": "rag"
+    },
+    {
+        "query": "What time should students return to the hostel?",
+        "expected_intent": "rag_query",
+        "category": "rag"
+    },
+    {
+        "query": "Tell me the hostel timings",
+        "expected_intent": "rag_query",
+        "category": "rag"
+    },
+
+    {
+        "query": "Can you reset my password?",
+        "expected_intent": "password_reset",
+        "category": "password_reset"
+    },
+    {
+        "query": "My password is forgotten",
+        "expected_intent": "password_reset",
+        "category": "password_reset"
+    },
+    {
+        "query": "I cannot login because I forgot my password",
+        "expected_intent": "password_reset",
+        "category": "password_reset"
+    },
+    {
+        "query": "Please help with my password",
+        "expected_intent": "password_reset",
+        "category": "password_reset"
+    },
+    {
+        "query": "I need a new password",
+        "expected_intent": "password_reset",
+        "category": "password_reset"
+    },
+    {
+        "query": "Password reset please",
+        "expected_intent": "password_reset",
+        "category": "password_reset"
+    },
+
+    {
+        "query": "My hostel WiFi stopped working",
+        "expected_intent": "create_ticket",
+        "category": "create_ticket"
+    },
+    {
+        "query": "There is no water in my hostel room",
+        "expected_intent": "create_ticket",
+        "category": "create_ticket"
+    },
+    {
+        "query": "The fan in my room is not working",
+        "expected_intent": "create_ticket",
+        "category": "create_ticket"
+    },
+    {
+        "query": "I want to report an issue",
+        "expected_intent": "create_ticket",
+        "category": "create_ticket"
+    },
+    {
+        "query": "Please file a complaint for me",
+        "expected_intent": "create_ticket",
+        "category": "create_ticket"
+    },
+    {
+        "query": "I am having a problem in my hostel room",
+        "expected_intent": "create_ticket",
+        "category": "create_ticket"
+    },
+    {
+        "query": "The hostel internet does not work",
+        "expected_intent": "create_ticket",
+        "category": "create_ticket"
+    },
+    {
+        "query": "Report hostel maintenance issue",
+        "expected_intent": "create_ticket",
+        "category": "create_ticket"
+    },
+
+    {
+        "query": "Do I have any support tickets?",
+        "expected_intent": "view_tickets",
+        "category": "view_tickets"
+    },
+    {
+        "query": "Can I see my complaints?",
+        "expected_intent": "view_tickets",
+        "category": "view_tickets"
+    },
+    {
+        "query": "Check my complaint status",
+        "expected_intent": "view_tickets",
+        "category": "view_tickets"
+    },
+    {
+        "query": "What is the status of my ticket?",
+        "expected_intent": "view_tickets",
+        "category": "view_tickets"
+    },
+    {
+        "query": "List all complaints I have submitted",
+        "expected_intent": "view_tickets",
+        "category": "view_tickets"
+    },
+    {
+        "query": "Are there any open tickets for me?",
+        "expected_intent": "view_tickets",
+        "category": "view_tickets"
+    },
+    {
+        "query": "Show previous support requests",
+        "expected_intent": "view_tickets",
+        "category": "view_tickets"
+    },
+    {
+        "query": "Which complaints did I submit?",
+        "expected_intent": "view_tickets",
+        "category": "view_tickets"
+    },
+
+    {
+        "query": "What is the examination office phone number?",
+        "expected_intent": "contact_office",
+        "category": "contact_office"
+    },
+    {
+        "query": "Give me the exam branch email",
+        "expected_intent": "contact_office",
+        "category": "contact_office"
+    },
+    {
+        "query": "Where is the accounts office?",
+        "expected_intent": "contact_office",
+        "category": "contact_office"
+    },
+    {
+        "query": "I need the placement cell phone number",
+        "expected_intent": "contact_office",
+        "category": "contact_office"
+    },
+    {
+        "query": "What is the library email address?",
+        "expected_intent": "contact_office",
+        "category": "contact_office"
+    },
+    {
+        "query": "Where can I find the placement cell?",
+        "expected_intent": "contact_office",
+        "category": "contact_office"
+    },
+
+    {
+        "query": "Hey",
+        "expected_intent": "greeting",
+        "category": "greeting"
+    },
+    {
+        "query": "Hii",
+        "expected_intent": "greeting",
+        "category": "greeting"
+    },
+    {
+        "query": "Good morning",
+        "expected_intent": "greeting",
+        "category": "greeting"
+    },
+    {
+        "query": "Hey good evening",
+        "expected_intent": "greeting",
+        "category": "greeting"
+    },
+
+    {
+        "query": "What hostel WiFi problems are common?",
+        "expected_intent": "rag_query",
+        "category": "tricky"
+    },
+    {
+        "query": "Tell me about support tickets",
+        "expected_intent": "rag_query",
+        "category": "tricky"
+    },
+    {
+        "query": "What is the examination branch?",
+        "expected_intent": "rag_query",
+        "category": "tricky"
+    },
+    {
+        "query": "What are the hostel rules?",
+        "expected_intent": "rag_query",
+        "category": "tricky"
+    }
+]

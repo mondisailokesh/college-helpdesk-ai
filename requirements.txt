@@ -1,0 +1,17 @@
+chromadb
+
+sentence-transformers
+
+langchain
+
+langchain-community
+
+pypdf
+
+streamlit
+
+fastapi
+
+uvicorn
+
+pandas

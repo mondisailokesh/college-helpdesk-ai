@@ -1,0 +1,111 @@
+[
+    {
+        "query": "What is the hostel fee?",
+        "expected_intent": "rag_query"
+    },
+    {
+        "query": "Tell me all fee details",
+        "expected_intent": "rag_query"
+    },
+    {
+        "query": "What is the minimum attendance?",
+        "expected_intent": "rag_query"
+    },
+    {
+        "query": "What are the library timings?",
+        "expected_intent": "rag_query"
+    },
+    {
+        "query": "How many books can I borrow?",
+        "expected_intent": "rag_query"
+    },
+    {
+        "query": "How can I get a bonafide certificate?",
+        "expected_intent": "rag_query"
+    },
+
+    {
+        "query": "Reset my password",
+        "expected_intent": "password_reset"
+    },
+    {
+        "query": "I forgot my password",
+        "expected_intent": "password_reset"
+    },
+    {
+        "query": "I cannot remember my password",
+        "expected_intent": "password_reset"
+    },
+    {
+        "query": "Help me reset my login password",
+        "expected_intent": "password_reset"
+    },
+
+    {
+        "query": "Raise a complaint",
+        "expected_intent": "create_ticket"
+    },
+    {
+        "query": "Create a support ticket",
+        "expected_intent": "create_ticket"
+    },
+    {
+        "query": "I have a problem with my hostel room",
+        "expected_intent": "create_ticket"
+    },
+    {
+        "query": "Hostel WiFi is not working",
+        "expected_intent": "create_ticket"
+    },
+
+    {
+        "query": "Show my tickets",
+        "expected_intent": "view_tickets"
+    },
+    {
+        "query": "Show my complaints",
+        "expected_intent": "view_tickets"
+    },
+    {
+        "query": "View my support tickets",
+        "expected_intent": "view_tickets"
+    },
+    {
+        "query": "What complaints have I raised?",
+        "expected_intent": "view_tickets"
+    },
+
+    {
+        "query": "Contact examination office",
+        "expected_intent": "contact_office"
+    },
+    {
+        "query": "Where is the examination branch?",
+        "expected_intent": "contact_office"
+    },
+    {
+        "query": "Give me the library contact details",
+        "expected_intent": "contact_office"
+    },
+    {
+        "query": "How can I contact the placement cell?",
+        "expected_intent": "contact_office"
+    },
+
+    {
+        "query": "Hi",
+        "expected_intent": "greeting"
+    },
+    {
+        "query": "Hello",
+        "expected_intent": "greeting"
+    },
+    {
+        "query": "Hello good morning",
+        "expected_intent": "greeting"
+    },
+    {
+        "query": "Good evening",
+        "expected_intent": "greeting"
+    }
+]

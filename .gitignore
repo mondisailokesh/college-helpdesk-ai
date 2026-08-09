@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+
+# Environment variables
+.env
+
+# SQLite databases
+*.db
+
+# Streamlit cache
+.streamlit/
+
+# MacOS
+.DS_Store
+
+# VS Code
+.vscode/
