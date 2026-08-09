@@ -27,12 +27,12 @@ The system is composed of:
 
 ```mermaid
 flowchart TD
-    UI[Streamlit UI<br/>frontend/app.py]
-    Router[Router<br/>router.py]
-    Intent[Intent Classifier<br/>intents/classifier.py]
-    Tools[Tools<br/>tools/*]
-    Knowledge[Knowledge Base<br/>knowledge/*.md]
-    Database[Databases<br/>database/, college_db/]
+    UI[Streamlit UI]
+    Router[Router]
+    Intent[Intent Classifier]
+    Tools[Tools]
+    Knowledge[Knowledge Base]
+    Database[Databases]
 
     UI --> Router
     Router --> Intent
