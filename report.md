@@ -4,42 +4,92 @@
 
 The College Helpdesk AI project is a student-facing helpdesk assistant built with Python and Streamlit. It supports login, complaint ticket creation, ticket viewing and deletion, password updates, and local knowledge retrieval for campus questions.
 
-## Objectives
+## Approach Comparison
 
-- Build a conversational helpdesk interface for students.
-- Provide local knowledge-based answers for college-related queries.
-- Support complaint ticket workflows.
-- Support password reset/update interactions.
-- Clean up the repository for public GitHub publication.
+The College Helpdesk AI project uses a hybrid architecture that combines local rule-based intent detection with Ollama LLM-based intent classification and answer generation.
 
-## Architecture
+Selected approach:
 
-The system is composed of:
+- Rule-based intent detection in `intents/classifier.py` for deterministic local routing.
+- Ollama LLM support via `rag/llm.py` for ticket intent classification and natural answer generation when available.
+- Router-based dispatch in `router.py` for ticket creation, ticket viewing, password reset, contact lookup, and information retrieval.
+- Local markdown knowledge storage in `knowledge/` for fallback retrieval and context-aware responses.
+- Streamlit front end in `frontend/app.py` for a conversational user interface.
 
-- **Frontend**: Streamlit app in `frontend/app.py`.
-- **Router**: Query dispatcher in `router.py`.
-- **Intent Classification**: Rule-based logic in `intents/classifier.py`.
-- **Knowledge Layer**: Local markdown files under `knowledge/`.
-- **Tools**: Utility modules in `tools/` for auth, ticket management, and password reset.
-- **Database**: SQLite storage in `database/`.
+Alternative approaches considered:
+
+- **LLM-based conversational AI:** more natural language flexibility, but introduces external dependency and risks hallucinations.
+- **Static FAQ-only system:** low complexity, but cannot support transactional workflows like ticket creation or password reset.
+- **Hybrid rule-based + retrieval:** chosen because it balances reliability, local execution, and multi-purpose functionality.
+
+The advanced dataset covers:
+
+- Clear requests.
+- Ambiguous or tricky requests.
+- Multi-step service requests.
+- Sensitive information flows such as password reset and contact lookup.
+
+This evaluation measures:
+
+- Intent detection accuracy.
+- Tool selection accuracy.
+- Response quality through appropriate routing and answer selection.
+
+
+## System Architecture
+
+The College Helpdesk AI architecture includes:
+
+- `frontend/app.py`: Streamlit UI and session management.
+- `router.py`: Query router and intent dispatcher.
+- `intents/classifier.py`: Rule-based intent classification.
+- `tools/`: Auth, ticket, password reset, and contact lookup modules.
+- `knowledge/`: Local markdown knowledge files.
+- `rag/`: Ollama LLM and retrieval support, including intent classification and answer generation.
+- `database/` and `college_db/`: SQLite storage for users and tickets.
+- `evaluation/`: Test scripts and datasets.
 
 ### Architecture Diagram
 
 ```mermaid
 flowchart TD
-    UI[Streamlit UI]
-    Router[Router]
-    Intent[Intent Classifier]
-    Tools[Tools]
-    Knowledge[Knowledge Base]
-    Database[Databases]
-
-    UI --> Router
-    Router --> Intent
-    Intent --> Tools
-    Intent --> Knowledge
-    Tools --> Database
+    UI[Streamlit UI] --> Router[Router]
+    Router --> Intent[Intent Classifier]
+    Intent --> Ticket[Ticket Tools]
+    Intent --> Password[Password Reset]
+    Intent --> Contact[Contact Lookup]
+    Intent --> Knowledge[Knowledge Retrieval]
+    Ticket --> DB[SQLite Database]
+    Password --> DB
+    Contact --> DB
 ```
+
+### Request Handling Flow
+
+1. The user logs in through Streamlit.
+2. The user submits a query.
+3. The router classifies intent.
+4. The query is dispatched to the correct module.
+5. The selected module executes and returns a response.
+6. The response is displayed in the UI.
+
+```mermaid
+flowchart TD
+    UserInput[User Input] --> Router[Router]
+    Router --> IntentDetect[Intent Detection]
+    IntentDetect -->|create_ticket| TicketModule[Ticket Module]
+    IntentDetect -->|view_tickets| ViewModule[View Tickets]
+    IntentDetect -->|password_reset| PasswordModule[Password Reset]
+    IntentDetect -->|contact_office| ContactModule[Contact Lookup]
+    IntentDetect -->|rag_query| KnowledgeModule[Knowledge Retrieval]
+    TicketModule --> Response[Formatted Response]
+    ViewModule --> Response
+    PasswordModule --> Response
+    ContactModule --> Response
+    KnowledgeModule --> Response
+    Response --> UI
+```
+
 
 ## Used Tools and Technologies
 
@@ -74,30 +124,6 @@ college_helpdesk_ai/
 └── .gitignore
 ```
 
-## Working Flow
-
-1. Student logs in through the Streamlit UI.
-2. The student submits a chat query.
-3. The router classifies the intent.
-4. If the intent is ticket-related, ticket tools run.
-5. If the intent is password reset, the bot requests or updates the password.
-6. If the intent is informational, the local knowledge base is used.
-7. The answer is formatted and shown in the UI.
-
-### Working Flow Chart
-
-```mermaid
-flowchart TD
-    A[User Input] --> B[Router]
-    B --> C[Intent Detection]
-    C --> D[Ticket Tools]
-    C --> E[Password Reset]
-    C --> F[Knowledge Retrieval]
-    D --> G[Format Response]
-    E --> G
-    F --> G
-    G --> H[Display in UI]
-```
 
 ## Detailed Feature Flow
 
@@ -119,31 +145,53 @@ The project supports password update requests through the chatbot. When a user s
 
 Informational queries are answered from local markdown files in `knowledge/`. This avoids dependency on remote LLM services and keeps answers consistent with campus information.
 
-## Cleanup and GitHub Preparation
+## Test Results
 
-Cleanup actions completed:
+The advanced evaluation executed `evaluation/evaluate_advanced.py` against `evaluation/advanced_test_cases.json`.
 
-- Removed generated `__pycache__` folders.
-- Removed root-level test files that were not needed to run the project.
-- Added `.gitignore` to exclude `venv/`, Python caches, and environment artifacts.
-- Added a README and report files to document the project.
+Dataset coverage:
 
-## GitHub Status
+- `rag`: campus information requests.
+- `password_reset`: password support requests.
+- `create_ticket`: issue reporting and complaint creation.
+- `view_tickets`: ticket status and history queries.
+- `contact_office`: campus office contact inquiries.
+- `greeting`: conversational salutations.
+- `tricky`: ambiguous or edge-case queries.
 
-The repository has been published to:
+Results:
 
-- https://github.com/mondisailokesh/college-helpdesk-ai
+- Total test cases: **50**
+- Correct predictions: **50**
+- Incorrect predictions: **0**
+- Overall accuracy: **100.00%**
 
-The `main` branch tracks `origin/main` and includes the cleanup commit.
+Category performance:
+
+- `rag`: 14/14 (100.00%)
+- `password_reset`: 6/6 (100.00%)
+- `create_ticket`: 8/8 (100.00%)
+- `view_tickets`: 8/8 (100.00%)
+- `contact_office`: 6/6 (100.00%)
+- `greeting`: 4/4 (100.00%)
+- `tricky`: 4/4 (100.00%)
+
+This confirms accurate intent detection, correct tool selection, and appropriate response routing across the evaluated request types.
+
+## Challenges Faced
+
+- Distinguishing ambiguous wording between knowledge queries and ticket creation.
+- Ensuring the router selected the correct tool module for each request category.
+- Designing the evaluation dataset to include clear, ambiguous, multi-step, and sensitive flows.
+- Delivering reliable local knowledge answers without an external LLM dependency.
+- Managing secure password reset handling within a prototype.
 
 ## Future Improvements
 
-- Add a hosted LLM integration for improved conversational answers.
-- Add automated tests for key flows.
-- Expand the knowledge retrieval engine with vector search.
-- Add user registration and recovery flows.
-
-## Conclusion
-
-The College Helpdesk AI project now includes both Markdown and LaTeX project reports with architecture diagrams, flowcharts, project structure, used tools, and working flow documentation. The repository is cleaned and ready for publication.
+- Add password hashing and stronger validation for password reset operations.
+- Expand the evaluation dataset to cover more multi-turn and sensitive interactions.
+- Improve knowledge retrieval with semantic or vector-based search.
+- Add human evaluation of response quality in addition to routing accuracy.
+- Enhance the Streamlit UI with clearer prompts and next-step guidance.
+- Add end-to-end automated tests and deployment support.
 ```
