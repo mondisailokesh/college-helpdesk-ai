@@ -69,8 +69,7 @@ college_helpdesk_ai/
 │   └── *.db
 ├── router.py
 ├── README.md
-├── project_report.md
-├── project_report.tex
+├── report.md
 ├── requirements.txt
 └── .gitignore
 ```
