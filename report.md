@@ -36,8 +36,8 @@ flowchart TD
 
     UI --> Router
     Router --> Intent
-    Router --> Tools
-    Router --> Knowledge
+    Intent --> Tools
+    Intent --> Knowledge
     Tools --> Database
 ```
 
@@ -92,8 +92,8 @@ flowchart TD
     A[User Input] --> B[Router]
     B --> C[Intent Detection]
     C --> D[Ticket Tools]
-    B --> E[Password Reset]
-    B --> F[Knowledge Retrieval]
+    C --> E[Password Reset]
+    C --> F[Knowledge Retrieval]
     D --> G[Format Response]
     E --> G
     F --> G
